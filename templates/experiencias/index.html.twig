@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Experiencias index{% endblock %}
+
+{% block body %}
+    <h1>Experiencias index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Tipo</th>
+                <th>Frase</th>
+                <th>Precio</th>
+                <th>Descripcion</th>
+                <th>Clima</th>
+                <th>Indispensable</th>
+                <th>Tiempo</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for experiencia in experiencias %}
+            <tr>
+                <td>{{ experiencia.id }}</td>
+                <td>{{ experiencia.nombre }}</td>
+                <td>{{ experiencia.tipo }}</td>
+                <td>{{ experiencia.frase }}</td>
+                <td>{{ experiencia.precio }}</td>
+                <td>{{ experiencia.descripcion }}</td>
+                <td>{{ experiencia.clima }}</td>
+                <td>{{ experiencia.indispensable }}</td>
+                <td>{{ experiencia.tiempo }}</td>
+                <td>
+                    <a href="{{ path('experiencias_show', {'id': experiencia.id}) }}">show</a>
+                    <a href="{{ path('experiencias_edit', {'id': experiencia.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="10">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('experiencias_new') }}">Create new</a>
+{% endblock %}
